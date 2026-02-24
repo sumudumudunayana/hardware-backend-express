@@ -35,6 +35,25 @@ const createCategory = async (req, res) => {
   }
 };
 
+// UPDATE CATEGORY
+const updateCategory = async (req, res) => {
+  try {
+    const updatedCategory = await Category.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedCategory) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    res.status(200).json(updatedCategory);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getCategories,
   getCategoryById,
