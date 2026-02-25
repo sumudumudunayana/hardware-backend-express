@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
+const Counter = require("./counter");
 
 const productSchema = new mongoose.Schema(
   {
+    productId: {
+      type: Number,
+      unique: true
+    },
     itemName: {
       type: String,
       required: true,
