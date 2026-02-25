@@ -35,6 +35,7 @@ const createCategory = async (req, res) => {
   }
 };
 
+
 // UPDATE CATEGORY
 const updateCategory = async (req, res) => {
   try {
