@@ -49,4 +49,17 @@ const productSchema = new mongoose.Schema(
   }
 );
 
+// SAFE AUTO-INCREMENT
+productSchema.pre("save", async function () {
+  if (this.isNew) {
+    const counter = await Counter.findOneAndUpdate(
+      { _id: "productId" },
+      { $inc: { sequenceValue: 1 } },
+      { returnDocument: "after", upsert: true }
+    );
+
+    this.productId = counter.sequenceValue;
+  }
+});
+
 module.exports = mongoose.model("Product", productSchema);
