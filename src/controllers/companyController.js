@@ -25,6 +25,16 @@ const getCompanyById = async (req, res) => {
   }
 };
 
+// CREATE
+const createCompany = async (req, res) => {
+  try {
+    const newCompany = await Company.create(req.body);
+    res.status(201).json(newCompany);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 
 module.exports = {
   getCompanies,
