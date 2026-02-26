@@ -38,4 +38,17 @@ const companySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// SAFE AUTO-INCREMENT
+companySchema.pre("save", async function () {
+  if (this.isNew) {
+    const counter = await Counter.findOneAndUpdate(
+      { _id: "companyId" },
+      { $inc: { sequenceValue: 1 } },
+      { returnDocument: "after", upsert: true }
+    );
+
+    this.companyId = counter.sequenceValue;
+  }
+});
+
 module.exports = mongoose.model("Company", companySchema);
