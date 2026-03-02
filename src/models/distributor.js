@@ -33,5 +33,19 @@ const distributorSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// SAFE AUTO-INCREMENT
+distributorSchema.pre("save", async function () {
+  if (this.isNew) {
+    const counter = await Counter.findOneAndUpdate(
+      { _id: "distributorId" },
+      { $inc: { sequenceValue: 1 } },
+      { returnDocument: "after", upsert: true }
+    );
+
+    this.distributorId = counter.sequenceValue;
+  }
+});
+
+
 
 module.exports = mongoose.model("Distributor", distributorSchema);
