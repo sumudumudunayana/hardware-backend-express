@@ -10,6 +10,20 @@ const getDistributors = async (req, res) => {
   }
 };
 
+// GET ONE
+const getDistributorById = async (req, res) => {
+  try {
+    const distributor = await Distributor.findById(req.params.id);
+
+    if (!distributor) {
+      return res.status(404).json({ message: "Distributor not found" });
+    }
+
+    res.status(200).json(distributor);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 module.exports = {
   getDistributors,
