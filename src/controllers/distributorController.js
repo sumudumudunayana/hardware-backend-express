@@ -35,6 +35,25 @@ const createDistributor = async (req, res) => {
   }
 };
 
+// UPDATE
+const updateDistributor = async (req, res) => {
+  try {
+    const updatedDistributor = await Distributor.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedDistributor) {
+      return res.status(404).json({ message: "Distributor not found" });
+    }
+
+    res.status(200).json(updatedDistributor);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getDistributors,
   getDistributorById,
