@@ -25,6 +25,16 @@ const getDistributorById = async (req, res) => {
   }
 };
 
+// CREATE
+const createDistributor = async (req, res) => {
+  try {
+    const newDistributor = await Distributor.create(req.body);
+    res.status(201).json(newDistributor);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getDistributors,
   getDistributorById,
