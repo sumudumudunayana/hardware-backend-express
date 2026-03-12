@@ -22,7 +22,6 @@ const addToCart = async (req, res) => {
         items: [],
       });
     }
-
     const existingItem = cart.items.find(
       (item) => item.itemId.toString() === itemId,
     );
