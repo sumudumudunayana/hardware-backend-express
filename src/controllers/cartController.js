@@ -65,7 +65,7 @@ const updateQty = async (req, res) => {
   res.json(cart);
 };
 
-//CLEAR CART
+// CLEAR CART
 const clearCart = async (req, res) => {
   await Cart.findOneAndDelete({ userId: req.user.id });
 
