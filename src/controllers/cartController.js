@@ -35,7 +35,6 @@ const addToCart = async (req, res) => {
         quantity: 1,
       });
     }
-
     await cart.save();
 
     res.json(cart);
