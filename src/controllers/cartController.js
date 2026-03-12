@@ -46,7 +46,6 @@ const addToCart = async (req, res) => {
 const updateQty = async (req, res) => {
   const { itemId, quantity } = req.body;
   const cart = await Cart.findOne({ userId: req.user.id });
-
   const item = cart.items.find((i) => i.itemId.toString() === itemId);
 
   if (item) item.quantity = quantity;
