@@ -13,7 +13,7 @@ const getCart = async (req, res) => {
   }
 };
 
-//ADD ITEM TO CART
+// ADD ITEM TO CART
 const addToCart = async (req, res) => {
   try {
     const { itemId, name, price } = req.body;
