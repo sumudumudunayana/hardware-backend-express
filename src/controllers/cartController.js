@@ -5,7 +5,6 @@ const getCart = async (req, res) => {
   try {
     const cart = await Cart.findOne({ userId: req.user.id });
     if (!cart) return res.json({ items: [] });
-
     res.json(cart);
   } catch (error) {
     res.status(500).json({ message: error.message });
