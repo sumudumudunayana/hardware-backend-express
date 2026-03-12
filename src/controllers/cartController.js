@@ -26,7 +26,6 @@ const addToCart = async (req, res) => {
     const existingItem = cart.items.find(
       (item) => item.itemId.toString() === itemId,
     );
-
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
