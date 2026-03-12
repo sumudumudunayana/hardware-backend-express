@@ -72,8 +72,7 @@ const clearCart = async (req, res) => {
   res.json({ message: "Cart cleared" });
 };
 
-//REMOVE ITEM
-
+// REMOVE ITEM
 const removeItem = async (req, res) => {
   try {
     const { itemId } = req.params;
