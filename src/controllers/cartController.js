@@ -4,7 +4,6 @@ const Cart = require("../models/cart");
 const getCart = async (req, res) => {
   try {
     const cart = await Cart.findOne({ userId: req.user.id });
-
     if (!cart) return res.json({ items: [] });
 
     res.json(cart);
