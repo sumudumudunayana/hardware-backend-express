@@ -50,7 +50,7 @@ const addToCart = async (req, res) => {
   }
 };
 
-//UPDATE QTY
+// UPDATE QTY
 const updateQty = async (req, res) => {
   const { itemId, quantity } = req.body;
 
