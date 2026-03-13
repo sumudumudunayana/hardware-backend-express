@@ -42,7 +42,6 @@ const updateCategory = async (req, res) => {
       req.body,
       { new: true, runValidators: true }
     );
-
     if (!updatedCategory) {
       return res.status(404).json({ message: "Category not found" });
     }
