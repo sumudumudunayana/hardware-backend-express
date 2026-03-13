@@ -65,7 +65,6 @@ const removeItem = async (req, res) => {
   try {
     const { itemId } = req.params;
     const cart = await Cart.findOne({ userId: req.user.id });
-
     if (!cart) return res.status(404).json({ message: "Cart not found" });
 
     cart.items = cart.items.filter((item) => item.itemId.toString() !== itemId);
