@@ -33,14 +33,13 @@ const createCategory = async (req, res) => {
   }
 };
 
-
 // UPDATE CATEGORY
 const updateCategory = async (req, res) => {
   try {
     const updatedCategory = await Category.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
     if (!updatedCategory) {
       return res.status(404).json({ message: "Category not found" });
@@ -69,5 +68,5 @@ module.exports = {
   getCategoryById,
   createCategory,
   updateCategory,
-  deleteCategory
+  deleteCategory,
 };
