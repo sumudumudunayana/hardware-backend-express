@@ -77,6 +77,5 @@ module.exports = {
   addToCart,
   updateQty,
   clearCart,
-  removeItem
-
+  removeItem,
 };
