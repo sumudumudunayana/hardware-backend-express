@@ -44,7 +44,6 @@ const updateCustomer = async (req, res) => {
     if (!updatedCustomer) {
       return res.status(404).json({ message: "Customer not found" });
     }
-
     res.status(200).json(updatedCustomer);
   } catch (error) {
     res.status(400).json({ message: error.message });
