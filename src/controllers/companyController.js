@@ -41,7 +41,6 @@ const updateCompany = async (req, res) => {
       req.body,
       { new: true, runValidators: true }
     );
-
     if (!updatedCompany) {
       return res.status(404).json({ message: "Company not found" });
     }
