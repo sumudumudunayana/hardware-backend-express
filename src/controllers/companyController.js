@@ -39,7 +39,7 @@ const updateCompany = async (req, res) => {
     const updatedCompany = await Company.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
     if (!updatedCompany) {
       return res.status(404).json({ message: "Company not found" });
@@ -63,11 +63,10 @@ const deleteCompany = async (req, res) => {
   }
 };
 
-
 module.exports = {
   getCompanies,
   getCompanyById,
   createCompany,
   updateCompany,
-  deleteCompany
+  deleteCompany,
 };
