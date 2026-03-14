@@ -39,7 +39,7 @@ const updateCustomer = async (req, res) => {
     const updatedCustomer = await Customer.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
     if (!updatedCustomer) {
       return res.status(404).json({ message: "Customer not found" });
@@ -68,5 +68,5 @@ module.exports = {
   getCustomerById,
   createCustomer,
   updateCustomer,
-  deleteCustomer
+  deleteCustomer,
 };
