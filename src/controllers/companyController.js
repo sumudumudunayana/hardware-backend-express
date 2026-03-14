@@ -14,7 +14,6 @@ const getCompanies = async (req, res) => {
 const getCompanyById = async (req, res) => {
   try {
     const company = await Company.findById(req.params.id);
-
     if (!company) {
       return res.status(404).json({ message: "Company not found" });
     }
