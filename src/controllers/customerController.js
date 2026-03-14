@@ -41,7 +41,6 @@ const updateCustomer = async (req, res) => {
       req.body,
       { new: true, runValidators: true }
     );
-
     if (!updatedCustomer) {
       return res.status(404).json({ message: "Customer not found" });
     }
