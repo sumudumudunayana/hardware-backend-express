@@ -70,7 +70,6 @@ const deleteItem = async (req, res) => {
     if (!deletedItem) {
       return res.status(404).json({ message: "Item not found" });
     }
-
     res.status(200).json({ message: "Item deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
