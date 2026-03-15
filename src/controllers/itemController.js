@@ -57,7 +57,6 @@ const updateItem = async (req, res) => {
     if (!updatedItem) {
       return res.status(404).json({ message: "Item not found" });
     }
-
     res.status(200).json(updatedItem);
   } catch (error) {
     res.status(400).json({ message: error.message });
