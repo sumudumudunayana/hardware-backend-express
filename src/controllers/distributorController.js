@@ -17,7 +17,6 @@ const getDistributorById = async (req, res) => {
     if (!distributor) {
       return res.status(404).json({ message: "Distributor not found" });
     }
-
     res.status(200).json(distributor);
   } catch (error) {
     res.status(500).json({ message: error.message });
