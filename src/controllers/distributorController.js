@@ -44,7 +44,6 @@ const updateDistributor = async (req, res) => {
     if (!updatedDistributor) {
       return res.status(404).json({ message: "Distributor not found" });
     }
-
     res.status(200).json(updatedDistributor);
   } catch (error) {
     res.status(400).json({ message: error.message });
