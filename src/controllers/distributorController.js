@@ -57,7 +57,6 @@ const deleteDistributor = async (req, res) => {
     if (!deletedDistributor) {
       return res.status(404).json({ message: "Distributor not found" });
     }
-
     res.status(200).json({ message: "Distributor deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
