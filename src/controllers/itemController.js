@@ -67,7 +67,6 @@ const updateItem = async (req, res) => {
 const deleteItem = async (req, res) => {
   try {
     const deletedItem = await Item.findByIdAndDelete(req.params.id);
-
     if (!deletedItem) {
       return res.status(404).json({ message: "Item not found" });
     }
