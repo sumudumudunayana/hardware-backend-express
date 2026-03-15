@@ -54,7 +54,6 @@ const updateDistributor = async (req, res) => {
 const deleteDistributor = async (req, res) => {
   try {
     const deletedDistributor = await Distributor.findByIdAndDelete(req.params.id);
-
     if (!deletedDistributor) {
       return res.status(404).json({ message: "Distributor not found" });
     }
