@@ -28,7 +28,6 @@ const getItemById = async (req, res) => {
 // CREATE ITEM
 const createItem = async (req, res) => {
   try {
-    // Create item
     const newItem = await Item.create(req.body);
     //Automatically create stock entry for this item
     await Stock.create({
