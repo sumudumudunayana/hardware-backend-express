@@ -19,7 +19,6 @@ const getItemById = async (req, res) => {
     if (!item) {
       return res.status(404).json({ message: "Item not found" });
     }
-
     res.status(200).json(item);
   } catch (error) {
     res.status(500).json({ message: error.message });
