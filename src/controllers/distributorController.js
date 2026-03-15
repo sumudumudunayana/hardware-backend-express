@@ -39,7 +39,7 @@ const updateDistributor = async (req, res) => {
     const updatedDistributor = await Distributor.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
     if (!updatedDistributor) {
       return res.status(404).json({ message: "Distributor not found" });
@@ -53,7 +53,9 @@ const updateDistributor = async (req, res) => {
 // DELETE
 const deleteDistributor = async (req, res) => {
   try {
-    const deletedDistributor = await Distributor.findByIdAndDelete(req.params.id);
+    const deletedDistributor = await Distributor.findByIdAndDelete(
+      req.params.id,
+    );
     if (!deletedDistributor) {
       return res.status(404).json({ message: "Distributor not found" });
     }
@@ -63,11 +65,10 @@ const deleteDistributor = async (req, res) => {
   }
 };
 
-
 module.exports = {
   getDistributors,
   getDistributorById,
   createDistributor,
   updateDistributor,
-  deleteDistributor
+  deleteDistributor,
 };
