@@ -41,7 +41,6 @@ const updateDistributor = async (req, res) => {
       req.body,
       { new: true, runValidators: true }
     );
-
     if (!updatedDistributor) {
       return res.status(404).json({ message: "Distributor not found" });
     }
