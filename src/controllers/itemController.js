@@ -1,7 +1,6 @@
 const Item = require("../models/item");
 const Stock = require("../models/stock");
 
-
 // GET ALL ITEMS
 const getItems = async (req, res) => {
   try {
