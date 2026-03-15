@@ -14,7 +14,6 @@ const getDistributors = async (req, res) => {
 const getDistributorById = async (req, res) => {
   try {
     const distributor = await Distributor.findById(req.params.id);
-
     if (!distributor) {
       return res.status(404).json({ message: "Distributor not found" });
     }
