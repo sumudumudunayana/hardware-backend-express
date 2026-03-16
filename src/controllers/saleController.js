@@ -14,7 +14,6 @@ const createSale = async (req, res) => {
     if (!items || !Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ message: "Cart is empty" });
     }
-
     // 1) Stock check + subtotal
     let subtotal = 0;
 
