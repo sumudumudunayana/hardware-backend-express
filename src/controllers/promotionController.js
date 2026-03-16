@@ -100,7 +100,6 @@ const updatePromotion = async (req, res) => {
 const deletePromotion = async (req, res) => {
   try {
     const promotion = await Promotion.findByIdAndDelete(req.params.id);
-
     if (!promotion) {
       return res.status(404).json({ message: "Promotion not found" });
     }
