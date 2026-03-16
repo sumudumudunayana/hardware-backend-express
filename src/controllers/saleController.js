@@ -20,7 +20,6 @@ const createSale = async (req, res) => {
       if (!cartItem.itemId || Number(cartItem.quantity) <= 0) {
         return res.status(400).json({ message: "Invalid cart data" });
       }
-
       const stock = await Stock.findOne({ itemId: cartItem.itemId });
 
       if (!stock || stock.quantity < cartItem.quantity) {
