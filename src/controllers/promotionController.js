@@ -47,7 +47,6 @@ const createPromotion = async (req, res) => {
       itemId: applyTo === "specific" ? itemId : null,
       status,
     });
-
     res.status(201).json(promotion);
   } catch (error) {
     console.error("PROMOTION ERROR:", error);
