@@ -16,7 +16,6 @@ const createSale = async (req, res) => {
     }
     // 1) Stock check + subtotal
     let subtotal = 0;
-
     for (const cartItem of items) {
       if (!cartItem.itemId || Number(cartItem.quantity) <= 0) {
         return res.status(400).json({ message: "Invalid cart data" });
