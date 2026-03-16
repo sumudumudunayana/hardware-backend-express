@@ -31,7 +31,6 @@ const createPromotion = async (req, res) => {
         .status(400)
         .json({ message: "End date must be after start date." });
     }
-
     if (applyTo === "specific" && !itemId) {
       return res
         .status(400)
