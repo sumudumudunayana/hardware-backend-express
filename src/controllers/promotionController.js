@@ -87,7 +87,6 @@ const updatePromotion = async (req, res) => {
       req.body,
       { new: true },
     );
-
     if (!promotion) {
       return res.status(404).json({ message: "Promotion not found" });
     }
