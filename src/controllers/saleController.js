@@ -11,7 +11,6 @@ function generateInvoiceNumber() {
 const createSale = async (req, res) => {
   try {
     const { items } = req.body; // [{ itemId, quantity, price }]
-
     if (!items || !Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ message: "Cart is empty" });
     }
