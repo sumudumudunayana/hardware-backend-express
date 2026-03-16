@@ -36,7 +36,6 @@ const createPromotion = async (req, res) => {
         .status(400)
         .json({ message: "Select an item for specific promotion." });
     }
-
     const promotion = await Promotion.create({
       promotionName,
       promotionDescription,
