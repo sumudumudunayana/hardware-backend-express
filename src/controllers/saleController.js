@@ -26,7 +26,6 @@ const createSale = async (req, res) => {
           message: `Not enough stock for itemId ${cartItem.itemId}`,
         });
       }
-
       subtotal += Number(cartItem.price) * Number(cartItem.quantity);
     }
 
