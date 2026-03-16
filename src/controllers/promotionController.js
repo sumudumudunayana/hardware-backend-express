@@ -70,7 +70,6 @@ const getPromotionById = async (req, res) => {
     const promotion = await Promotion.findById(req.params.id).populate(
       "itemId",
     );
-
     if (!promotion) {
       return res.status(404).json({ message: "Promotion not found" });
     }
