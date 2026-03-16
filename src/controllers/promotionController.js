@@ -26,7 +26,6 @@ const createPromotion = async (req, res) => {
         .status(400)
         .json({ message: "All required fields must be filled." });
     }
-
     if (new Date(endDate) <= new Date(startDate)) {
       return res
         .status(400)
