@@ -200,7 +200,6 @@ const deleteSale = async (req, res) => {
         { $inc: { quantity: item.quantity } },
       );
     }
-
     // Delete sale items
     await SaleItem.deleteMany({ saleId: sale._id });
 
