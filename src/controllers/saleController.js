@@ -202,7 +202,6 @@ const deleteSale = async (req, res) => {
     }
     // Delete sale items
     await SaleItem.deleteMany({ saleId: sale._id });
-
     // Delete sale
     await Sale.findByIdAndDelete(req.params.id);
 
