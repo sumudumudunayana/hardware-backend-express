@@ -56,7 +56,6 @@ const updateStock = async (req, res) => {
     if (!stock) {
       return res.status(404).json({ message: "Stock not found" });
     }
-
     res.status(200).json(stock);
   } catch (error) {
     res.status(400).json({ message: error.message });
