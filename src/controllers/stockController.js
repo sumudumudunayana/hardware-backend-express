@@ -88,7 +88,6 @@ const getStockHistory = async (req, res) => {
     const history = await StockEntry.find({ itemId: req.params.itemId })
       .populate("itemId")
       .sort({ arrivalDate: -1 });
-
     res.status(200).json(history);
   } catch (error) {
     res.status(500).json({ message: error.message });
