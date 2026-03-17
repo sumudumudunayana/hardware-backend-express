@@ -26,7 +26,6 @@ const createStock = async (req, res) => {
     });
     // Update current stock
     let stock = await Stock.findOne({ itemId });
-
     if (stock) {
       stock.quantity += quantity;
 
