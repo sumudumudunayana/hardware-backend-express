@@ -76,7 +76,6 @@ const createSale = async (req, res) => {
         (p.applyTo === "specific" &&
           items.some((it) => String(it.itemId) === String(p.itemId)));
       if (!eligible) continue;
-
       let amount = Number(p.discountValue);
       if (amount <= 0) continue;
 
