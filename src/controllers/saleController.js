@@ -134,7 +134,6 @@ const createSale = async (req, res) => {
 const getAllSales = async (req, res) => {
   try {
     const sales = await Sale.find().sort({ createdAt: -1 });
-
     const salesWithItems = await Promise.all(
       sales.map(async (sale) => {
         const items = await SaleItem.find({ saleId: sale._id }).populate(
