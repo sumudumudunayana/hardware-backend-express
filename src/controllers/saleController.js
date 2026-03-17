@@ -139,7 +139,6 @@ const getAllSales = async (req, res) => {
         const items = await SaleItem.find({ saleId: sale._id }).populate(
           "itemId",
         );
-
         return {
           ...sale.toObject(),
           items,
