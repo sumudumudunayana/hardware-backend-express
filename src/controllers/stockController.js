@@ -18,7 +18,6 @@ const getStocks = async (req, res) => {
 const createStock = async (req, res) => {
   try {
     const { itemId, quantity, arrivalDate } = req.body;
-
     // Save history
     await StockEntry.create({
       itemId,
