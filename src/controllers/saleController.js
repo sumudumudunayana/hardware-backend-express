@@ -145,7 +145,6 @@ const getAllSales = async (req, res) => {
         };
       }),
     );
-
     return res.status(200).json(salesWithItems);
   } catch (error) {
     console.error("GET ALL SALES ERROR:", error);
