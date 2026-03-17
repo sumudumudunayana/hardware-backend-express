@@ -28,7 +28,6 @@ const createStock = async (req, res) => {
     let stock = await Stock.findOne({ itemId });
     if (stock) {
       stock.quantity += quantity;
-
       await stock.save();
     } else {
       stock = await Stock.create({
