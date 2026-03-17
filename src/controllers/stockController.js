@@ -76,7 +76,6 @@ const deleteStock = async (req, res) => {
 const getStockByItem = async (req, res) => {
   try {
     const stock = await Stock.findOne({ itemId: req.params.itemId });
-
     res.status(200).json(stock);
   } catch (error) {
     res.status(500).json({ message: error.message });
