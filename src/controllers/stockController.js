@@ -53,7 +53,6 @@ const updateStock = async (req, res) => {
       { quantity },
       { new: true },
     );
-
     if (!stock) {
       return res.status(404).json({ message: "Stock not found" });
     }
