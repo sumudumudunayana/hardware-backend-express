@@ -31,7 +31,6 @@ const createSale = async (req, res) => {
 
     // 2) Load active promotions (date + status)
     const now = new Date();
-
     const promos = await Promotion.find({
       status: "active",
       startDate: { $lte: now },
