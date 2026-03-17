@@ -160,7 +160,6 @@ const getSaleById = async (req, res) => {
     const saleItems = await SaleItem.find({ saleId: sale._id }).populate(
       "itemId",
     );
-
     return res.status(200).json({
       ...sale.toObject(),
       items: saleItems,
