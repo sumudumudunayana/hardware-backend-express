@@ -157,7 +157,6 @@ const getSaleById = async (req, res) => {
   try {
     const sale = await Sale.findById(req.params.id);
     if (!sale) return res.status(404).json({ message: "Sale not found" });
-
     const saleItems = await SaleItem.find({ saleId: sale._id }).populate(
       "itemId",
     );
