@@ -179,7 +179,6 @@ const updateSale = async (req, res) => {
       { totalAmount },
       { new: true },
     );
-
     if (!sale) return res.status(404).json({ message: "Sale not found" });
 
     return res.status(200).json(sale);
