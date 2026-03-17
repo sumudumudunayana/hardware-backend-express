@@ -41,7 +41,6 @@ const createSale = async (req, res) => {
       (p) => p.discountType === "percentage",
     );
     const fixedPromos = promos.filter((p) => p.discountType === "fixed");
-
     // 3) Calculate discounts
     // Rule: percentage discounts first (on subtotal)
     let discountTotal = 0;
