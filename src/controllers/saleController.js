@@ -119,7 +119,6 @@ const createSale = async (req, res) => {
         { $inc: { quantity: -Number(cartItem.quantity) } },
       );
     }
-
     return res.status(201).json({
       message: "Sale completed",
       invoiceNumber,
