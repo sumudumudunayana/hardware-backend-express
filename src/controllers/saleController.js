@@ -114,7 +114,6 @@ const createSale = async (req, res) => {
         unitPrice: Number(cartItem.price),
         subtotal: Number(cartItem.price) * Number(cartItem.quantity),
       });
-
       await Stock.findOneAndUpdate(
         { itemId: cartItem.itemId },
         { $inc: { quantity: -Number(cartItem.quantity) } },
