@@ -36,7 +36,6 @@ const createSale = async (req, res) => {
       startDate: { $lte: now },
       endDate: { $gte: now },
     });
-
     // Separate promotions
     const percentagePromos = promos.filter(
       (p) => p.discountType === "percentage",
