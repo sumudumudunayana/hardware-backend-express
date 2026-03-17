@@ -45,7 +45,6 @@ const createStock = async (req, res) => {
 const updateStock = async (req, res) => {
   try {
     const { quantity } = req.body;
-
     if (quantity < 0) {
       return res.status(400).json({ message: "Stock cannot be negative" });
     }
