@@ -19,7 +19,7 @@ const createStock = async (req, res) => {
   try {
     const { itemId, quantity, arrivalDate } = req.body;
 
-    // 1️⃣ Save history
+    // Save history
     await StockEntry.create({
       itemId,
       quantity,
