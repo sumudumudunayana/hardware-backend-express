@@ -55,7 +55,6 @@ const createSale = async (req, res) => {
         (p.applyTo === "specific" &&
           items.some((it) => String(it.itemId) === String(p.itemId)));
       if (!eligible) continue;
-
       const amount = (runningBase * Number(p.discountValue)) / 100;
       if (amount <= 0) continue;
 
