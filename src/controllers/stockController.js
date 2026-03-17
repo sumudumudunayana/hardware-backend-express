@@ -48,7 +48,6 @@ const updateStock = async (req, res) => {
     if (quantity < 0) {
       return res.status(400).json({ message: "Stock cannot be negative" });
     }
-
     const stock = await Stock.findByIdAndUpdate(
       req.params.id,
       { quantity },
