@@ -105,7 +105,6 @@ const createSale = async (req, res) => {
       totalAmount: finalTotal,
       promotions: appliedPromos,
     });
-
     // 5) Create sale items + deduct stock
     for (const cartItem of items) {
       await SaleItem.create({
