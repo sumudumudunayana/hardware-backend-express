@@ -97,7 +97,6 @@ const createSale = async (req, res) => {
 
     // 4) Create sale
     const invoiceNumber = generateInvoiceNumber();
-
     const sale = await Sale.create({
       invoiceNumber,
       subtotal: Math.round(subtotal * 100) / 100,
