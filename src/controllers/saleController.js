@@ -78,7 +78,6 @@ const createSale = async (req, res) => {
       if (!eligible) continue;
       let amount = Number(p.discountValue);
       if (amount <= 0) continue;
-
       // do not exceed remaining base
       if (amount > runningBase) amount = runningBase;
 
