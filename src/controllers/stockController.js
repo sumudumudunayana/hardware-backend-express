@@ -24,8 +24,7 @@ const createStock = async (req, res) => {
       quantity,
       arrivalDate,
     });
-
-    // 2️⃣ Update current stock
+    // Update current stock
     let stock = await Stock.findOne({ itemId });
 
     if (stock) {
