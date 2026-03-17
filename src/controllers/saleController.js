@@ -204,7 +204,6 @@ const deleteSale = async (req, res) => {
     await SaleItem.deleteMany({ saleId: sale._id });
     // Delete sale
     await Sale.findByIdAndDelete(req.params.id);
-
     return res.status(200).json({ message: "Sale deleted successfully" });
   } catch (error) {
     console.error("DELETE SALE ERROR:", error);
