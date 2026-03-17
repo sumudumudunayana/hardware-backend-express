@@ -180,7 +180,6 @@ const updateSale = async (req, res) => {
       { new: true },
     );
     if (!sale) return res.status(404).json({ message: "Sale not found" });
-
     return res.status(200).json(sale);
   } catch (error) {
     console.error("UPDATE SALE ERROR:", error);
