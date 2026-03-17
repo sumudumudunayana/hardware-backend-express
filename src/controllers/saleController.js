@@ -69,7 +69,6 @@ const createSale = async (req, res) => {
         amount: Math.round(amount * 100) / 100,
       });
     }
-
     // Rule: fixed discounts after percentage (ONCE per bill)
     for (const p of fixedPromos) {
       const eligible =
