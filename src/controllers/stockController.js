@@ -35,7 +35,6 @@ const createStock = async (req, res) => {
         quantity,
       });
     }
-
     res.status(201).json(stock);
   } catch (error) {
     res.status(500).json({ message: error.message });
