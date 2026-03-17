@@ -174,7 +174,6 @@ const getSaleById = async (req, res) => {
 const updateSale = async (req, res) => {
   try {
     const { totalAmount } = req.body;
-
     const sale = await Sale.findByIdAndUpdate(
       req.params.id,
       { totalAmount },
