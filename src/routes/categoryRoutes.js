@@ -9,10 +9,24 @@ const {
   deleteCategory
 } = require("../controllers/categoryController");
 
+const { protect } = require("../middleware/authMiddleware");
+
+//  Protect ALL routes
+router.use(protect);
+
+//  GET all categories
 router.get("/", getCategories);
+
+//  GET single category
 router.get("/:id", getCategoryById);
+
+//  CREATE category
 router.post("/", createCategory);
+
+//  UPDATE category
 router.put("/:id", updateCategory);
+
+//  DELETE category
 router.delete("/:id", deleteCategory);
 
 module.exports = router;
