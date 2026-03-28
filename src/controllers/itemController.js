@@ -65,11 +65,22 @@ const updateItem = async (req, res) => {
 // DELETE ITEM
 const deleteItem = async (req, res) => {
   try {
-    const deletedItem = await Item.findByIdAndDelete(req.params.id);
+    const itemId = req.params.id;
+
+    // Delete item
+    const deletedItem = await Item.findByIdAndDelete(itemId);
+
     if (!deletedItem) {
       return res.status(404).json({ message: "Item not found" });
     }
-    res.status(200).json({ message: "Item deleted successfully" });
+
+    // ALSO delete related stock
+    await Stock.deleteOne({ itemId: itemId });
+
+    res.status(200).json({
+      message: "Item and related stock deleted successfully",
+    });
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
