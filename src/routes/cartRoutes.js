@@ -11,10 +11,22 @@ const {
 
 const { protect } = require("../middleware/authMiddleware");
 
-router.get("/", protect, getCart);
-router.post("/add", protect, addToCart);
-router.put("/update", protect, updateQty);
-router.delete("/clear", protect, clearCart);
-router.delete("/remove/:itemId", protect, removeItem);
+// 🔒 Protect ALL routes
+router.use(protect);
+
+//  Get cart
+router.get("/", getCart);
+
+//  Add item
+router.post("/add", addToCart);
+
+//  Update quantity
+router.put("/update", updateQty);
+
+//  Clear cart
+router.delete("/clear", clearCart);
+
+//  Remove single item
+router.delete("/remove/:itemId", removeItem);
 
 module.exports = router;
