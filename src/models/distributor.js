@@ -21,7 +21,8 @@ const distributorSchema = new mongoose.Schema(
     },
 
     distributorContactNumber: {
-      type: Number
+      type: String,
+      trim: true
     },
 
     distributorEmail: {
