@@ -4,7 +4,7 @@ const protect = (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
 
-    // 🔍 Check if header exists
+    // Check if header exists
     if (!authHeader) {
       return res.status(401).json({ message: "No token provided" });
     }
@@ -24,7 +24,7 @@ const protect = (req, res, next) => {
     // 🔐 Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // ✅ Attach user info to request
+    //  Attach user info to request
     req.user = decoded; // { id, role }
 
     next();
