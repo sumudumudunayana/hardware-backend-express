@@ -11,7 +11,7 @@ const {
 
 const { protect } = require("../middleware/authMiddleware");
 
-//  Protect ALL routes
+// Protect ALL routes
 router.use(protect);
 
 //  CREATE promotion
