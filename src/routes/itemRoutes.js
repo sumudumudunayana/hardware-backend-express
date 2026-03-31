@@ -11,7 +11,7 @@ const {
 
 const { protect } = require("../middleware/authMiddleware");
 
-//  Protect ALL routes (only logged-in users)
+// Protect ALL routes (only logged-in users)
 router.use(protect);
 
 //  GET all items
