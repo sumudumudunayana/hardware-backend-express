@@ -16,13 +16,15 @@ const customerSchema = new mongoose.Schema(
 
     customerContactNumber: {
       type: String,
-      trim: true
+      trim: true,
+      unique: true
     },
 
     customerEmail: {
       type: String,
       trim: true,
-      lowercase: true
+      lowercase: true,
+      unique: true
     }
   },
   { timestamps: true }
