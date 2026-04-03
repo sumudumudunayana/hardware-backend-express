@@ -26,7 +26,8 @@ const companySchema = new mongoose.Schema(
     },
 
     companyContactNumber: {
-      type: Number
+      type: String,
+      trim: true
     },
 
     companyEmail: {
