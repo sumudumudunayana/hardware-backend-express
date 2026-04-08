@@ -47,7 +47,7 @@ const register = async (req, res) => {
 
 
 
-// ================= LOGIN =================
+// LOGIN 
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
