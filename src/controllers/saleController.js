@@ -14,7 +14,7 @@ const createSale = async (req, res) => {
     if (!items || !Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ message: "Cart is empty" });
     }
-    // 1) Stock check + subtotal
+    // Stock check + subtotal
     let subtotal = 0;
     for (const cartItem of items) {
       if (!cartItem.itemId || Number(cartItem.quantity) <= 0) {
@@ -29,7 +29,7 @@ const createSale = async (req, res) => {
       subtotal += Number(cartItem.price) * Number(cartItem.quantity);
     }
 
-    // 2) Load active promotions (date + status)
+    //  Load active promotions (date + status)
     const now = new Date();
     const promos = await Promotion.find({
       status: "active",
@@ -41,7 +41,7 @@ const createSale = async (req, res) => {
       (p) => p.discountType === "percentage",
     );
     const fixedPromos = promos.filter((p) => p.discountType === "fixed");
-    // 3) Calculate discounts
+    //  Calculate discounts
     // Rule: percentage discounts first (on subtotal)
     let discountTotal = 0;
     let runningBase = subtotal;
@@ -105,7 +105,7 @@ const createSale = async (req, res) => {
       totalAmount: finalTotal,
       promotions: appliedPromos,
     });
-    // 5) Create sale items + deduct stock
+    //  Create sale items + deduct stock
     for (const cartItem of items) {
       await SaleItem.create({
         saleId: sale._id,
