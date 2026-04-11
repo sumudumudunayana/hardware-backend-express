@@ -110,7 +110,6 @@ const updateCategory = async (req, res) => {
       categoryName?.trim();
     categoryDescription =
       categoryDescription?.trim();
-
     // validation
     if (
       !categoryName ||
@@ -121,7 +120,6 @@ const updateCategory = async (req, res) => {
           "All fields are required",
       });
     }
-
     if (
       !/^[A-Za-z\s]+$/.test(
         categoryName
