@@ -161,11 +161,9 @@ const updateCategory = async (req, res) => {
         message: "Category not found",
       });
     }
-
     res.status(200).json(
       updatedCategory
     );
-
   } catch (error) {
     res.status(400).json({
       message: error.message,
