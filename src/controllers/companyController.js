@@ -6,7 +6,6 @@ const getCompanies = async (req, res) => {
     const companies = await Company.find().sort({
       createdAt: -1,
     });
-
     res.status(200).json(companies);
   } catch (error) {
     res.status(500).json({
