@@ -40,13 +40,11 @@ const createCategory = async (req, res) => {
       categoryName,
       categoryDescription,
     } = req.body;
-
     // clean input
     categoryName =
       categoryName?.trim();
     categoryDescription =
       categoryDescription?.trim();
-
     // required validation
     if (
       !categoryName ||
@@ -57,7 +55,6 @@ const createCategory = async (req, res) => {
           "All fields are required",
       });
     }
-
     // name validation
     if (
       !/^[A-Za-z\s]+$/.test(
@@ -69,20 +66,17 @@ const createCategory = async (req, res) => {
           "Category name can contain only letters and spaces",
       });
     }
-
     if (categoryName.length < 3) {
       return res.status(400).json({
         message:
           "Category name must be at least 3 characters",
       });
     }
-
     // duplicate check
     const existingCategory =
       await Category.findOne({
         categoryName,
       });
-
     if (existingCategory) {
       return res.status(400).json({
         message:
