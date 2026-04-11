@@ -72,7 +72,6 @@ const login = async (req, res) => {
         expiresIn: "1d",
       }
     );
-
     // Send response
     res.status(200).json({
       message: "Login successful",
