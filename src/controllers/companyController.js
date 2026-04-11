@@ -58,27 +58,23 @@ const createCompany = async (req, res) => {
         message: "All fields are required",
       });
     }
-
     // company name validation
     if (!/^[A-Za-z\s]+$/.test(companyName)) {
       return res.status(400).json({
         message: "Company name can contain only letters and spaces",
       });
     }
-
     if (companyName.length < 3) {
       return res.status(400).json({
         message: "Company name must be at least 3 characters",
       });
     }
-
     // address validation
     if (!/^[A-Za-z0-9\s,./-]+$/.test(companyAddress)) {
       return res.status(400).json({
         message: "Address contains invalid symbols",
       });
     }
-
     // phone validation
     if (!/^\d{10}$/.test(companyContactNumber)) {
       return res.status(400).json({
