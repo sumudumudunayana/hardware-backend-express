@@ -6,9 +6,7 @@ const getCategories = async (req, res) => {
     const categories = await Category.find().sort({
       createdAt: -1,
     });
-
     res.status(200).json(categories);
-
   } catch (error) {
     res.status(500).json({
       message: error.message,
