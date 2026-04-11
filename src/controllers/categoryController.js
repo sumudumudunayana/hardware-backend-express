@@ -130,7 +130,6 @@ const updateCategory = async (req, res) => {
           "Category name can contain only letters and spaces",
       });
     }
-
     // duplicate check excluding current category
     const existingCategory =
       await Category.findOne({
@@ -139,14 +138,12 @@ const updateCategory = async (req, res) => {
         },
         categoryName,
       });
-
     if (existingCategory) {
       return res.status(400).json({
         message:
           "Another category with same name already exists",
       });
     }
-
     const updatedCategory =
       await Category.findByIdAndUpdate(
         req.params.id,
@@ -159,7 +156,6 @@ const updateCategory = async (req, res) => {
           runValidators: true,
         }
       );
-
     if (!updatedCategory) {
       return res.status(404).json({
         message: "Category not found",
