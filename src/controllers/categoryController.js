@@ -83,17 +83,14 @@ const createCategory = async (req, res) => {
           "Category name already exists",
       });
     }
-
     const newCategory =
       await Category.create({
         categoryName,
         categoryDescription,
       });
-
     res.status(201).json(
       newCategory
     );
-
   } catch (error) {
     res.status(400).json({
       message: error.message,
