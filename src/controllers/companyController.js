@@ -41,16 +41,11 @@ const createCompany = async (req, res) => {
       companyContactNumber,
       companyEmail,
     } = req.body;
-
     // clean input
     companyName = companyName?.trim();
-
     companyDescription = companyDescription?.trim();
-
     companyAddress = companyAddress?.trim();
-
     companyEmail = companyEmail?.trim().toLowerCase();
-
     // required validation
     if (
       !companyName ||
