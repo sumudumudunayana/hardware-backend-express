@@ -47,24 +47,20 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
     // Validate input
     if (!email || !password) {
       return res.status(400).json({ message: "Email and password required" });
     }
-
     // Check user
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
-
     // Compare password (bcrypt)
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
-
     // Generate JWT
     const token = jwt.sign(
       {
