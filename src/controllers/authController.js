@@ -84,12 +84,9 @@ const login = async (req, res) => {
         role: user.role,
       },
     });
-
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
-
-
 
 module.exports = { register, login };
