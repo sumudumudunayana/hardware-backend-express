@@ -17,9 +17,7 @@ const getCategories = async (req, res) => {
 // GET SINGLE CATEGORY
 const getCategoryById = async (req, res) => {
   try {
-    const category = await Category.findById(
-      req.params.id
-    );
+    const category = await Category.findById(req.params.id);
     if (!category) {
       return res.status(404).json({
         message: "Category not found",
@@ -36,61 +34,41 @@ const getCategoryById = async (req, res) => {
 // CREATE CATEGORY
 const createCategory = async (req, res) => {
   try {
-    let {
-      categoryName,
-      categoryDescription,
-    } = req.body;
+    let { categoryName, categoryDescription } = req.body;
     // clean input
-    categoryName =
-      categoryName?.trim();
-    categoryDescription =
-      categoryDescription?.trim();
+    categoryName = categoryName?.trim();
+    categoryDescription = categoryDescription?.trim();
     // required validation
-    if (
-      !categoryName ||
-      !categoryDescription
-    ) {
+    if (!categoryName || !categoryDescription) {
       return res.status(400).json({
-        message:
-          "All fields are required",
+        message: "All fields are required",
       });
     }
     // name validation
-    if (
-      !/^[A-Za-z\s]+$/.test(
-        categoryName
-      )
-    ) {
+    if (!/^[A-Za-z\s]+$/.test(categoryName)) {
       return res.status(400).json({
-        message:
-          "Category name can contain only letters and spaces",
+        message: "Category name can contain only letters and spaces",
       });
     }
     if (categoryName.length < 3) {
       return res.status(400).json({
-        message:
-          "Category name must be at least 3 characters",
+        message: "Category name must be at least 3 characters",
       });
     }
     // duplicate check
-    const existingCategory =
-      await Category.findOne({
-        categoryName,
-      });
+    const existingCategory = await Category.findOne({
+      categoryName,
+    });
     if (existingCategory) {
       return res.status(400).json({
-        message:
-          "Category name already exists",
+        message: "Category name already exists",
       });
     }
-    const newCategory =
-      await Category.create({
-        categoryName,
-        categoryDescription,
-      });
-    res.status(201).json(
-      newCategory
-    );
+    const newCategory = await Category.create({
+      categoryName,
+      categoryDescription,
+    });
+    res.status(201).json(newCategory);
   } catch (error) {
     res.status(400).json({
       message: error.message,
@@ -101,69 +79,50 @@ const createCategory = async (req, res) => {
 // UPDATE CATEGORY
 const updateCategory = async (req, res) => {
   try {
-    let {
-      categoryName,
-      categoryDescription,
-    } = req.body;
+    let { categoryName, categoryDescription } = req.body;
 
-    categoryName =
-      categoryName?.trim();
-    categoryDescription =
-      categoryDescription?.trim();
+    categoryName = categoryName?.trim();
+    categoryDescription = categoryDescription?.trim();
     // validation
-    if (
-      !categoryName ||
-      !categoryDescription
-    ) {
+    if (!categoryName || !categoryDescription) {
       return res.status(400).json({
-        message:
-          "All fields are required",
+        message: "All fields are required",
       });
     }
-    if (
-      !/^[A-Za-z\s]+$/.test(
-        categoryName
-      )
-    ) {
+    if (!/^[A-Za-z\s]+$/.test(categoryName)) {
       return res.status(400).json({
-        message:
-          "Category name can contain only letters and spaces",
+        message: "Category name can contain only letters and spaces",
       });
     }
     // duplicate check excluding current category
-    const existingCategory =
-      await Category.findOne({
-        _id: {
-          $ne: req.params.id,
-        },
-        categoryName,
-      });
+    const existingCategory = await Category.findOne({
+      _id: {
+        $ne: req.params.id,
+      },
+      categoryName,
+    });
     if (existingCategory) {
       return res.status(400).json({
-        message:
-          "Another category with same name already exists",
+        message: "Another category with same name already exists",
       });
     }
-    const updatedCategory =
-      await Category.findByIdAndUpdate(
-        req.params.id,
-        {
-          categoryName,
-          categoryDescription,
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+    const updatedCategory = await Category.findByIdAndUpdate(
+      req.params.id,
+      {
+        categoryName,
+        categoryDescription,
+      },
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
     if (!updatedCategory) {
       return res.status(404).json({
         message: "Category not found",
       });
     }
-    res.status(200).json(
-      updatedCategory
-    );
+    res.status(200).json(updatedCategory);
   } catch (error) {
     res.status(400).json({
       message: error.message,
@@ -174,10 +133,7 @@ const updateCategory = async (req, res) => {
 // DELETE CATEGORY
 const deleteCategory = async (req, res) => {
   try {
-    const deletedCategory =
-      await Category.findByIdAndDelete(
-        req.params.id
-      );
+    const deletedCategory = await Category.findByIdAndDelete(req.params.id);
 
     if (!deletedCategory) {
       return res.status(404).json({
@@ -186,10 +142,8 @@ const deleteCategory = async (req, res) => {
     }
 
     res.status(200).json({
-      message:
-        "Category deleted successfully",
+      message: "Category deleted successfully",
     });
-
   } catch (error) {
     res.status(500).json({
       message: error.message,
