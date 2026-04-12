@@ -93,6 +93,8 @@ const createCustomer = async (req, res) => {
   }
 };
 
+
+
 // UPDATE
 const updateCustomer = async (req, res) => {
   try {
@@ -101,7 +103,6 @@ const updateCustomer = async (req, res) => {
       customerContactNumber,
       customerEmail,
     } = req.body;
-
     if (customerName) customerName = customerName.trim();
     if (customerEmail)
       customerEmail = customerEmail.trim().toLowerCase();
