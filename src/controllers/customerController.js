@@ -59,14 +59,12 @@ const createCustomer = async (req, res) => {
         message: "Contact number must be exactly 10 digits",
       });
     }
-
     // Email validation
     if (!/^\S+@\S+\.\S+$/.test(customerEmail)) {
       return res.status(400).json({
         message: "Invalid email address",
       });
     }
-
     // Duplicate check
     const existingCustomer = await Customer.findOne({
       $or: [
