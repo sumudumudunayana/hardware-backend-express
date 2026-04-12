@@ -220,7 +220,6 @@ const updateCompany = async (req, res) => {
 };
 
 
-
 // DELETE
 const deleteCompany = async (req, res) => {
   try {
@@ -241,6 +240,7 @@ const deleteCompany = async (req, res) => {
     });
   }
 };
+
 
 module.exports = {
   getCompanies,
