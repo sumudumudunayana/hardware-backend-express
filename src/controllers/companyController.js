@@ -186,13 +186,11 @@ const updateCompany = async (req, res) => {
         },
       ],
     });
-
     if (existingCompany) {
       return res.status(400).json({
         message: "Another company with same details already exists",
       });
     }
-
     const updatedCompany = await Company.findByIdAndUpdate(
       req.params.id,
       {
