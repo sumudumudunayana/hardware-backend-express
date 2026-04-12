@@ -156,19 +156,16 @@ const updateCompany = async (req, res) => {
         message: "All fields are required",
       });
     }
-
     if (!/^[A-Za-z\s]+$/.test(companyName)) {
       return res.status(400).json({
         message: "Company name can contain only letters and spaces",
       });
     }
-
     if (!/^[A-Za-z0-9\s,./-]+$/.test(companyAddress)) {
       return res.status(400).json({
         message: "Address contains invalid symbols",
       });
     }
-
     // duplicate check excluding current company
     const existingCompany = await Company.findOne({
       _id: {
