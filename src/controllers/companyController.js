@@ -107,7 +107,6 @@ const createCompany = async (req, res) => {
         },
       ],
     });
-
     if (existingCompany) {
       return res.status(400).json({
         message:
@@ -128,6 +127,7 @@ const createCompany = async (req, res) => {
     });
   }
 };
+
 
 // UPDATE
 const updateCompany = async (req, res) => {
