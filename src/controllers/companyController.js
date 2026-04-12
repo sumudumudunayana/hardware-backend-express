@@ -139,13 +139,9 @@ const updateCompany = async (req, res) => {
       companyContactNumber,
       companyEmail,
     } = req.body;
-
     companyName = companyName?.trim();
-
     companyDescription = companyDescription?.trim();
-
     companyAddress = companyAddress?.trim();
-
     companyEmail = companyEmail?.trim().toLowerCase();
 
     // validation
