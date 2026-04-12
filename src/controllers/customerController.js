@@ -80,15 +80,12 @@ const createCustomer = async (req, res) => {
           "Customer with same name, phone number, or email already exists",
       });
     }
-
     const newCustomer = await Customer.create({
       customerName,
       customerContactNumber,
       customerEmail,
     });
-
     res.status(201).json(newCustomer);
-
   } catch (error) {
     res.status(400).json({
       message: error.message,
