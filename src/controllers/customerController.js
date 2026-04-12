@@ -106,7 +106,6 @@ const updateCustomer = async (req, res) => {
     if (customerName) customerName = customerName.trim();
     if (customerEmail)
       customerEmail = customerEmail.trim().toLowerCase();
-
     // Duplicate check excluding current customer
     const existingCustomer = await Customer.findOne({
       _id: { $ne: req.params.id },
@@ -116,7 +115,6 @@ const updateCustomer = async (req, res) => {
         { customerEmail },
       ],
     });
-
     if (existingCustomer) {
       return res.status(400).json({
         message:
