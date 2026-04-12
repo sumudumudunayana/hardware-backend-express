@@ -46,7 +46,6 @@ const createCustomer = async (req, res) => {
         message: "All fields are required",
       });
     }
-
     // Name validation
     if (!/^[A-Za-z\s]+$/.test(customerName)) {
       return res.status(400).json({
@@ -54,7 +53,6 @@ const createCustomer = async (req, res) => {
           "Customer name can contain only letters and spaces",
       });
     }
-
     // Phone validation
     if (!/^\d{10}$/.test(customerContactNumber)) {
       return res.status(400).json({
