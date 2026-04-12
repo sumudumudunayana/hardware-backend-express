@@ -14,6 +14,7 @@ const getCompanies = async (req, res) => {
   }
 };
 
+
 // GET ONE
 const getCompanyById = async (req, res) => {
   try {
@@ -30,6 +31,7 @@ const getCompanyById = async (req, res) => {
     });
   }
 };
+
 
 // CREATE
 const createCompany = async (req, res) => {
@@ -88,7 +90,6 @@ const createCompany = async (req, res) => {
         message: "Invalid email address",
       });
     }
-
     // duplicate check
     const existingCompany = await Company.findOne({
       $or: [
@@ -113,7 +114,6 @@ const createCompany = async (req, res) => {
           "Company with same name, address, phone, or email already exists",
       });
     }
-
     const newCompany = await Company.create({
       companyName,
       companyDescription,
@@ -121,7 +121,6 @@ const createCompany = async (req, res) => {
       companyContactNumber,
       companyEmail,
     });
-
     res.status(201).json(newCompany);
   } catch (error) {
     res.status(400).json({
