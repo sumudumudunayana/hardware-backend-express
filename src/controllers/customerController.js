@@ -10,6 +10,7 @@ const getCustomers = async (req, res) => {
   }
 };
 
+
 // GET ONE
 const getCustomerById = async (req, res) => {
   try {
@@ -27,6 +28,7 @@ const getCustomerById = async (req, res) => {
   }
 };
 
+
 // CREATE
 const createCustomer = async (req, res) => {
   try {
@@ -35,11 +37,9 @@ const createCustomer = async (req, res) => {
       customerContactNumber,
       customerEmail,
     } = req.body;
-
     // Clean input
     customerName = customerName?.trim();
     customerEmail = customerEmail?.trim().toLowerCase();
-
     // Validation
     if (!customerName || !customerContactNumber || !customerEmail) {
       return res.status(400).json({
