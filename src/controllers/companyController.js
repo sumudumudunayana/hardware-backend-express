@@ -211,7 +211,6 @@ const updateCompany = async (req, res) => {
         message: "Company not found",
       });
     }
-
     res.status(200).json(updatedCompany);
   } catch (error) {
     res.status(400).json({
@@ -219,6 +218,8 @@ const updateCompany = async (req, res) => {
     });
   }
 };
+
+
 
 // DELETE
 const deleteCompany = async (req, res) => {
