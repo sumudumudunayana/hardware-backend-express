@@ -124,11 +124,8 @@ const updateDistributor = async (req, res) => {
       distributorContactNumber,
       distributorEmail,
     } = req.body;
-
     distributorName = distributorName?.trim();
-
     distributorDescription = distributorDescription?.trim();
-
     distributorEmail = distributorEmail?.trim().toLowerCase();
 
     // validation
