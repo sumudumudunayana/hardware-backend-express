@@ -32,6 +32,7 @@ const getDistributorById = async (req, res) => {
   }
 };
 
+
 // CREATE
 const createDistributor = async (req, res) => {
   try {
@@ -41,12 +42,9 @@ const createDistributor = async (req, res) => {
       distributorContactNumber,
       distributorEmail,
     } = req.body;
-
     // clean input
     distributorName = distributorName?.trim();
-
     distributorDescription = distributorDescription?.trim();
-
     distributorEmail = distributorEmail?.trim().toLowerCase();
 
     // required validation
