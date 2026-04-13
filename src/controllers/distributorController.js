@@ -46,7 +46,6 @@ const createDistributor = async (req, res) => {
     distributorName = distributorName?.trim();
     distributorDescription = distributorDescription?.trim();
     distributorEmail = distributorEmail?.trim().toLowerCase();
-
     // required validation
     if (
       !distributorName ||
@@ -58,14 +57,12 @@ const createDistributor = async (req, res) => {
         message: "All fields are required",
       });
     }
-
     // name validation
     if (!/^[A-Za-z\s]+$/.test(distributorName)) {
       return res.status(400).json({
         message: "Supplier name can contain only letters and spaces",
       });
     }
-
     if (distributorName.length < 2) {
       return res.status(400).json({
         message: "Supplier name must be at least 2 characters",
