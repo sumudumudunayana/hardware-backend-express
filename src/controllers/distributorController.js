@@ -106,7 +106,6 @@ const createDistributor = async (req, res) => {
       distributorContactNumber,
       distributorEmail,
     });
-
     res.status(201).json(newDistributor);
   } catch (error) {
     res.status(400).json({
@@ -114,6 +113,7 @@ const createDistributor = async (req, res) => {
     });
   }
 };
+
 
 // UPDATE
 const updateDistributor = async (req, res) => {
