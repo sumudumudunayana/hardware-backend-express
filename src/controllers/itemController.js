@@ -81,7 +81,6 @@ const createItem = async (req, res) => {
     const existingItem = await Item.findOne({
       itemName: itemName,
     });
-
     if (existingItem) {
       return res.status(400).json({
         message: "Item name already exists",
@@ -91,7 +90,6 @@ const createItem = async (req, res) => {
     const cost = Number(itemCostPrice);
     const selling = Number(itemSellingPrice);
     const labeled = Number(itemLabeledPrice);
-
     // price validations
     if (cost < 0 || selling < 0 || labeled < 0) {
       return res.status(400).json({
