@@ -224,13 +224,11 @@ const updateCompany = async (req, res) => {
 const deleteCompany = async (req, res) => {
   try {
     const deletedCompany = await Company.findByIdAndDelete(req.params.id);
-
     if (!deletedCompany) {
       return res.status(404).json({
         message: "Company not found",
       });
     }
-
     res.status(200).json({
       message: "Company deleted successfully",
     });
@@ -240,7 +238,6 @@ const deleteCompany = async (req, res) => {
     });
   }
 };
-
 
 module.exports = {
   getCompanies,
