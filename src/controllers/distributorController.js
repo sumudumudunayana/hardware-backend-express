@@ -68,21 +68,18 @@ const createDistributor = async (req, res) => {
         message: "Supplier name must be at least 2 characters",
       });
     }
-
     // phone validation
     if (!/^\d{10}$/.test(distributorContactNumber)) {
       return res.status(400).json({
         message: "Contact number must be exactly 10 digits",
       });
     }
-
     // email validation
     if (!/^\S+@\S+\.\S+$/.test(distributorEmail)) {
       return res.status(400).json({
         message: "Invalid email address",
       });
     }
-
     // duplicate check
     const existingDistributor = await Distributor.findOne({
       $or: [
