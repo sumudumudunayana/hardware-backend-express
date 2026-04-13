@@ -64,7 +64,6 @@ const createItem = async (req, res) => {
         message: "All fields are required",
       });
     }
-
     // item name validation
     if (!/^[A-Za-z0-9\s]+$/.test(itemName)) {
       return res.status(400).json({
@@ -72,14 +71,12 @@ const createItem = async (req, res) => {
           "Item name can contain only letters, numbers, and spaces",
       });
     }
-
     // item name cannot be only numbers
     if (/^\d+$/.test(itemName)) {
       return res.status(400).json({
         message: "Item name cannot contain only numbers",
       });
     }
-
     // duplicate check
     const existingItem = await Item.findOne({
       itemName: itemName,
