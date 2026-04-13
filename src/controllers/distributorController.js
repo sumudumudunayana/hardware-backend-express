@@ -165,7 +165,6 @@ const updateDistributor = async (req, res) => {
         message: "Another supplier with same details already exists",
       });
     }
-
     const updatedDistributor = await Distributor.findByIdAndUpdate(
       req.params.id,
       {
@@ -179,13 +178,11 @@ const updateDistributor = async (req, res) => {
         runValidators: true,
       },
     );
-
     if (!updatedDistributor) {
       return res.status(404).json({
         message: "Distributor not found",
       });
     }
-
     res.status(200).json(updatedDistributor);
   } catch (error) {
     res.status(400).json({
