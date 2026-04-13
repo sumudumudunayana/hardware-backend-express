@@ -6,7 +6,6 @@ const getDistributors = async (req, res) => {
     const distributors = await Distributor.find().sort({
       createdAt: -1,
     });
-
     res.status(200).json(distributors);
   } catch (error) {
     res.status(500).json({
@@ -15,17 +14,16 @@ const getDistributors = async (req, res) => {
   }
 };
 
+
 // GET ONE
 const getDistributorById = async (req, res) => {
   try {
     const distributor = await Distributor.findById(req.params.id);
-
     if (!distributor) {
       return res.status(404).json({
         message: "Distributor not found",
       });
     }
-
     res.status(200).json(distributor);
   } catch (error) {
     res.status(500).json({
