@@ -121,7 +121,6 @@ const updateCustomer = async (req, res) => {
           "Another customer with same details already exists",
       });
     }
-
     const updatedCustomer = await Customer.findByIdAndUpdate(
       req.params.id,
       {
@@ -134,21 +133,19 @@ const updateCustomer = async (req, res) => {
         runValidators: true,
       }
     );
-
     if (!updatedCustomer) {
       return res.status(404).json({
         message: "Customer not found",
       });
     }
-
     res.status(200).json(updatedCustomer);
-
   } catch (error) {
     res.status(400).json({
       message: error.message,
     });
   }
 };
+
 
 // DELETE
 const deleteCustomer = async (req, res) => {
