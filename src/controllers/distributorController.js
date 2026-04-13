@@ -94,14 +94,12 @@ const createDistributor = async (req, res) => {
         },
       ],
     });
-
     if (existingDistributor) {
       return res.status(400).json({
         message:
           "Supplier with same name, phone number, or email already exists",
       });
     }
-
     const newDistributor = await Distributor.create({
       distributorName,
       distributorDescription,
