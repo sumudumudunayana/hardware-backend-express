@@ -203,7 +203,6 @@ const deleteDistributor = async (req, res) => {
         message: "Distributor not found",
       });
     }
-
     res.status(200).json({
       message: "Distributor deleted successfully",
     });
