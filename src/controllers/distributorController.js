@@ -143,7 +143,6 @@ const updateDistributor = async (req, res) => {
         message: "Supplier name can contain only letters and spaces",
       });
     }
-
     // duplicate check excluding current distributor
     const existingDistributor = await Distributor.findOne({
       _id: {
@@ -161,7 +160,6 @@ const updateDistributor = async (req, res) => {
         },
       ],
     });
-
     if (existingDistributor) {
       return res.status(400).json({
         message: "Another supplier with same details already exists",
