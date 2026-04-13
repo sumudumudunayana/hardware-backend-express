@@ -32,6 +32,7 @@ const getItemById = async (req, res) => {
   }
 };
 
+
 // CREATE ITEM
 const createItem = async (req, res) => {
   try {
@@ -45,11 +46,9 @@ const createItem = async (req, res) => {
       itemCompany,
       itemDistributor,
     } = req.body;
-
     // clean inputs
     itemName = itemName?.trim();
     itemDescription = itemDescription?.trim();
-
     // required field validation
     if (
       !itemName ||
