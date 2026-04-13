@@ -127,7 +127,6 @@ const updateDistributor = async (req, res) => {
     distributorName = distributorName?.trim();
     distributorDescription = distributorDescription?.trim();
     distributorEmail = distributorEmail?.trim().toLowerCase();
-
     // validation
     if (
       !distributorName ||
@@ -139,7 +138,6 @@ const updateDistributor = async (req, res) => {
         message: "All fields are required",
       });
     }
-
     if (!/^[A-Za-z\s]+$/.test(distributorName)) {
       return res.status(400).json({
         message: "Supplier name can contain only letters and spaces",
