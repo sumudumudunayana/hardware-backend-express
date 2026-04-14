@@ -10,6 +10,8 @@ const stockRoutes = require("./routes/stockRoutes");
 const promotionRoutes = require("./routes/promotionRoutes");
 const saleRoutes = require("./routes/saleRoutes");
 const cartRoutes = require("./routes/cartRoutes");
+const aiRoutes = require("./routes/aiRoutes");
+
 
 
 
@@ -39,5 +41,6 @@ app.use("/api/sales", saleRoutes);
 app.use("/api/sales", require("./routes/saleRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/cart", cartRoutes);
+app.use("/api/ai", aiRoutes);
 
 module.exports = app;
