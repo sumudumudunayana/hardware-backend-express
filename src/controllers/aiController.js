@@ -18,6 +18,24 @@ const predictAI = async (req, res) => {
   }
 };
 
+const retrainAI = async (req, res) => {
+  try {
+    const response = await axios.post(
+      "http://127.0.0.1:8000/retrain"
+    );
+
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.error("AI retrain error:", error.message);
+
+    res.status(500).json({
+      message: "AI retraining failed",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   predictAI,
+  retrainAI,
 };
