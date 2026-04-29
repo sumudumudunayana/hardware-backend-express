@@ -12,16 +12,21 @@ const saleRoutes = require("./routes/saleRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 const aiRoutes = require("./routes/aiRoutes");
 
-
-
-
-
-
-
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+
+    credentials: true,
+
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
+
 app.use(express.json()); // allow JSON body
 
 // Health check
@@ -38,7 +43,6 @@ app.use("/api/customers", customerRoutes);
 app.use("/api/stocks", stockRoutes);
 app.use("/api/promotions", promotionRoutes);
 app.use("/api/sales", saleRoutes);
-app.use("/api/sales", require("./routes/saleRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/cart", cartRoutes);
 app.use("/api/ai", aiRoutes);
