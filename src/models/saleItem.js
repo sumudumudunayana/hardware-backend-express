@@ -5,31 +5,32 @@ const saleItemSchema = new mongoose.Schema(
     saleId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Sale",
-      required: true
+      required: true,
     },
 
     itemId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Item",
-      required: true
+      required: true,
     },
 
     quantity: {
       type: Number,
-      required: true
+      required: true,
     },
 
     unitPrice: {
       type: Number,
-      required: true
+      required: true,
     },
 
     subtotal: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-module.exports = mongoose.model("SaleItem", saleItemSchema);
+module.exports =
+  mongoose.models.SaleItem || mongoose.model("SaleItem", saleItemSchema);
