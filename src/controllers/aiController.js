@@ -1,5 +1,5 @@
 const axios = require("axios");
-const SaleItem = require("../models/saleitem");
+const SaleItem = require("../models/saleItem");
 const Stock = require("../models/stock");
 
 // ✅ NEW AI URL (hosted)
