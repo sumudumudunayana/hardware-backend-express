@@ -3,8 +3,7 @@ const SaleItem = require("../models/saleitem");
 const Stock = require("../models/stock");
 
 // ✅ NEW AI URL (hosted)
-const AI_URL =
-  process.env.AI_URL || "https://hardware-aiml.onrender.com";
+const AI_URL = "https://hardware-aiml.onrender.com";
 
 // ==============================
 // MULTI-PRODUCT PREDICTION
