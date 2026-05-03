@@ -2,12 +2,15 @@ const axios = require("axios");
 const SaleItem = require("../models/saleitem");
 const Stock = require("../models/stock");
 
+// ✅ NEW AI URL (hosted)
+const AI_URL =
+  process.env.AI_URL || "https://hardware-aiml.onrender.com";
+
 // ==============================
 // MULTI-PRODUCT PREDICTION
 // ==============================
 const predictAI = async (req, res) => {
   try {
-    // Get latest sale per product
     const sales = await SaleItem.find()
       .populate("itemId")
       .sort({ createdAt: -1 });
@@ -27,7 +30,6 @@ const predictAI = async (req, res) => {
 
       const productId = String(item._id);
 
-      // Avoid duplicate products
       if (processedProducts.has(productId)) continue;
       processedProducts.add(productId);
 
@@ -49,7 +51,6 @@ const predictAI = async (req, res) => {
         rolling_avg_qty: sale.quantity || 0,
         previous_qty: sale.quantity || 0,
 
-        // 🔥 ADD THESE
         lag_1: sale.quantity || 0,
         lag_2: sale.quantity || 0,
         rolling_avg_7: sale.quantity || 0,
@@ -57,9 +58,25 @@ const predictAI = async (req, res) => {
       };
 
       try {
+        // ============================
+        // ❌ OLD LOCAL API (COMMENTED)
+        // ============================
+        /*
         const response = await axios.post(
           "http://127.0.0.1:8000/predict",
+          requestBody
+        );
+        */
+
+        // ============================
+        // ✅ NEW HOSTED AI API
+        // ============================
+        const response = await axios.post(
+          `${AI_URL}/predict`,
           requestBody,
+          {
+            timeout: 20000, // 🔥 prevent hanging (Render cold start)
+          }
         );
 
         results.push({
@@ -70,17 +87,18 @@ const predictAI = async (req, res) => {
           predicted_revenue: response.data.predicted_revenue,
 
           current_stock: stock?.quantity || 0,
-          recommended_stock: Math.ceil(response.data.predicted_demand + 5),
+          recommended_stock: Math.ceil(
+            response.data.predicted_demand + 5
+          ),
         });
       } catch (err) {
         console.error(
           "AI prediction error:",
-          err.response?.data || err.message,
+          err.response?.data || err.message
         );
       }
     }
 
-    // Sort by highest demand
     results.sort((a, b) => b.predicted_demand - a.predicted_demand);
 
     res.status(200).json(results);
@@ -99,7 +117,25 @@ const predictAI = async (req, res) => {
 // ==============================
 const retrainAI = async (req, res) => {
   try {
-    const response = await axios.post("http://127.0.0.1:8000/retrain");
+    // ============================
+    // ❌ OLD LOCAL API (COMMENTED)
+    // ============================
+    /*
+    const response = await axios.post(
+      "http://127.0.0.1:8000/retrain"
+    );
+    */
+
+    // ============================
+    // ✅ NEW HOSTED AI API
+    // ============================
+    const response = await axios.post(
+      `${AI_URL}/retrain`,
+      {},
+      {
+        timeout: 30000,
+      }
+    );
 
     res.status(200).json(response.data);
   } catch (error) {
