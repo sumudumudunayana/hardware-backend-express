@@ -15,6 +15,8 @@ const getItems = async (req, res) => {
 };
 
 
+
+
 // GET ONE ITEM
 const getItemById = async (req, res) => {
   try {
@@ -31,6 +33,8 @@ const getItemById = async (req, res) => {
     });
   }
 };
+
+
 
 
 // CREATE ITEM
@@ -142,6 +146,10 @@ const createItem = async (req, res) => {
   }
 };
 
+
+
+
+
 // UPDATE ITEM
 const updateItem = async (req, res) => {
   try {
@@ -223,6 +231,9 @@ const updateItem = async (req, res) => {
   }
 };
 
+
+
+
 // DELETE ITEM
 const deleteItem = async (req, res) => {
   try {
@@ -252,6 +263,8 @@ const deleteItem = async (req, res) => {
     });
   }
 };
+
+
 
 module.exports = {
   getItems,
