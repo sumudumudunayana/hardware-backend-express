@@ -15,6 +15,8 @@ const getDistributors = async (req, res) => {
 };
 
 
+
+
 // GET ONE
 const getDistributorById = async (req, res) => {
   try {
@@ -31,6 +33,8 @@ const getDistributorById = async (req, res) => {
     });
   }
 };
+
+
 
 
 // CREATE
@@ -115,6 +119,9 @@ const createDistributor = async (req, res) => {
 };
 
 
+
+
+
 // UPDATE
 const updateDistributor = async (req, res) => {
   try {
@@ -192,6 +199,9 @@ const updateDistributor = async (req, res) => {
 };
 
 
+
+
+
 // DELETE
 const deleteDistributor = async (req, res) => {
   try {
@@ -212,6 +222,9 @@ const deleteDistributor = async (req, res) => {
     });
   }
 };
+
+
+
 
 module.exports = {
   getDistributors,
