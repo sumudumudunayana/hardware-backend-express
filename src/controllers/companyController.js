@@ -15,6 +15,7 @@ const getCompanies = async (req, res) => {
 };
 
 
+
 // GET ONE
 const getCompanyById = async (req, res) => {
   try {
@@ -31,6 +32,7 @@ const getCompanyById = async (req, res) => {
     });
   }
 };
+
 
 
 // CREATE
@@ -129,6 +131,8 @@ const createCompany = async (req, res) => {
 };
 
 
+
+
 // UPDATE
 const updateCompany = async (req, res) => {
   try {
@@ -220,6 +224,8 @@ const updateCompany = async (req, res) => {
 };
 
 
+
+
 // DELETE
 const deleteCompany = async (req, res) => {
   try {
@@ -238,6 +244,8 @@ const deleteCompany = async (req, res) => {
     });
   }
 };
+
+
 
 module.exports = {
   getCompanies,
