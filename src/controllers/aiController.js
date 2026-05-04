@@ -74,7 +74,7 @@ const predictAI = async (req, res) => {
           `${AI_URL}/predict`,
           requestBody,
           {
-            timeout: 20000, // 🔥 prevent hanging (Render cold start)
+            timeout: 60000, // ✅ FIX: handle Render cold start
           }
         );
 
@@ -90,19 +90,38 @@ const predictAI = async (req, res) => {
             response.data.predicted_demand + 5
           ),
         });
+
       } catch (err) {
         console.error(
           "AI prediction error:",
           err.response?.data || err.message
         );
+
+        // ✅ IMPORTANT: fallback so UI doesn't break
+        results.push({
+          product_id: productId,
+          product_name: item.itemName,
+
+          predicted_demand: 0,
+          predicted_revenue: 0,
+
+          current_stock: stock?.quantity || 0,
+          recommended_stock: stock?.quantity || 0,
+
+          error: true, // 🔥 flag for frontend
+        });
       }
     }
 
-    results.sort((a, b) => b.predicted_demand - a.predicted_demand);
+    // ✅ sort safely (handle fallback values)
+    results.sort(
+      (a, b) =>
+        (b.predicted_demand || 0) - (a.predicted_demand || 0)
+    );
 
     res.status(200).json(results);
   } catch (error) {
-    console.error(error.message);
+    console.error("Prediction controller error:", error.message);
 
     res.status(500).json({
       message: "Prediction failed",
@@ -132,13 +151,13 @@ const retrainAI = async (req, res) => {
       `${AI_URL}/retrain`,
       {},
       {
-        timeout: 30000,
+        timeout: 60000, // ✅ safer timeout
       }
     );
 
     res.status(200).json(response.data);
   } catch (error) {
-    console.error(error.message);
+    console.error("Retrain error:", error.message);
 
     res.status(500).json({
       message: "Retraining failed",
