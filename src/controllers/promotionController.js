@@ -107,6 +107,10 @@ const createPromotion = async (req, res) => {
   }
 };
 
+
+
+
+
 // GET ALL PROMOTIONS
 const getPromotions = async (req, res) => {
   try {
@@ -119,6 +123,11 @@ const getPromotions = async (req, res) => {
     });
   }
 };
+
+
+
+
+
 
 // GET BY ID
 const getPromotionById = async (req, res) => {
@@ -140,6 +149,10 @@ const getPromotionById = async (req, res) => {
     });
   }
 };
+
+
+
+
 
 // UPDATE PROMOTION
 const updatePromotion = async (req, res) => {
@@ -207,6 +220,11 @@ const updatePromotion = async (req, res) => {
   }
 };
 
+
+
+
+
+
 // DELETE PROMOTION
 const deletePromotion = async (req, res) => {
   try {
@@ -227,6 +245,8 @@ const deletePromotion = async (req, res) => {
     });
   }
 };
+
+
 
 module.exports = {
   createPromotion,
