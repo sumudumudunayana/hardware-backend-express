@@ -14,6 +14,9 @@ const getStocks = async (req, res) => {
   }
 };
 
+
+
+
 // CREATE STOCK
 const createStock = async (req, res) => {
   try {
@@ -41,6 +44,9 @@ const createStock = async (req, res) => {
   }
 };
 
+
+
+
 // UPDATE STOCK QUANTITY
 const updateStock = async (req, res) => {
   try {
@@ -62,6 +68,9 @@ const updateStock = async (req, res) => {
   }
 };
 
+
+
+
 // DELETE STOCK
 const deleteStock = async (req, res) => {
   try {
@@ -72,6 +81,10 @@ const deleteStock = async (req, res) => {
   }
 };
 
+
+
+
+
 // GET STOCK BY ITEM ID
 const getStockByItem = async (req, res) => {
   try {
@@ -81,6 +94,9 @@ const getStockByItem = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+
 
 // GET STOCK HISTORY FOR AN ITEM
 const getStockHistory = async (req, res) => {
@@ -93,6 +109,9 @@ const getStockHistory = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+
 
 module.exports = {
   getStocks,
