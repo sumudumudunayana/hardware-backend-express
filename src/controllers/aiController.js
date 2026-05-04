@@ -2,12 +2,10 @@ const axios = require("axios");
 const SaleItem = require("../models/saleItem");
 const Stock = require("../models/stock");
 
-// ✅ NEW AI URL (hosted)
+//NEW AI URL (hosted)
 const AI_URL = "https://hardware-aiml.onrender.com";
 
-// ==============================
 // MULTI-PRODUCT PREDICTION
-// ==============================
 const predictAI = async (req, res) => {
   try {
     const sales = await SaleItem.find()
@@ -57,9 +55,7 @@ const predictAI = async (req, res) => {
       };
 
       try {
-        // ============================
-        // ❌ OLD LOCAL API (COMMENTED)
-        // ============================
+        // OLD LOCAL API (COMMENTED)
         /*
         const response = await axios.post(
           "http://127.0.0.1:8000/predict",
@@ -67,16 +63,10 @@ const predictAI = async (req, res) => {
         );
         */
 
-        // ============================
-        // ✅ NEW HOSTED AI API
-        // ============================
-        const response = await axios.post(
-          `${AI_URL}/predict`,
-          requestBody,
-          {
-            timeout: 60000, // ✅ FIX: handle Render cold start
-          }
-        );
+        // NEW HOSTED AI API
+        const response = await axios.post(`${AI_URL}/predict`, requestBody, {
+          timeout: 60000,
+        });
 
         results.push({
           product_id: productId,
@@ -86,18 +76,15 @@ const predictAI = async (req, res) => {
           predicted_revenue: response.data.predicted_revenue,
 
           current_stock: stock?.quantity || 0,
-          recommended_stock: Math.ceil(
-            response.data.predicted_demand + 5
-          ),
+          recommended_stock: Math.ceil(response.data.predicted_demand + 5),
         });
-
       } catch (err) {
         console.error(
           "AI prediction error:",
-          err.response?.data || err.message
+          err.response?.data || err.message,
         );
 
-        // ✅ IMPORTANT: fallback so UI doesn't break
+        // fallback so UI doesn't break
         results.push({
           product_id: productId,
           product_name: item.itemName,
@@ -108,15 +95,14 @@ const predictAI = async (req, res) => {
           current_stock: stock?.quantity || 0,
           recommended_stock: stock?.quantity || 0,
 
-          error: true, // 🔥 flag for frontend
+          error: true, // flag for frontend
         });
       }
     }
 
-    // ✅ sort safely (handle fallback values)
+    // sort safely (handle fallback values)
     results.sort(
-      (a, b) =>
-        (b.predicted_demand || 0) - (a.predicted_demand || 0)
+      (a, b) => (b.predicted_demand || 0) - (a.predicted_demand || 0),
     );
 
     res.status(200).json(results);
@@ -130,29 +116,23 @@ const predictAI = async (req, res) => {
   }
 };
 
-// ==============================
 // RETRAIN
-// ==============================
 const retrainAI = async (req, res) => {
   try {
-    // ============================
-    // ❌ OLD LOCAL API (COMMENTED)
-    // ============================
+    // OLD LOCAL API
     /*
     const response = await axios.post(
       "http://127.0.0.1:8000/retrain"
     );
     */
 
-    // ============================
-    // ✅ NEW HOSTED AI API
-    // ============================
+    // NEW HOSTED AI API
     const response = await axios.post(
       `${AI_URL}/retrain`,
       {},
       {
-        timeout: 60000, // ✅ safer timeout
-      }
+        timeout: 60000,
+      },
     );
 
     res.status(200).json(response.data);
@@ -166,7 +146,7 @@ const retrainAI = async (req, res) => {
   }
 };
 
-// ==============================
+
 module.exports = {
   predictAI,
   retrainAI,
