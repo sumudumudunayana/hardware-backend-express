@@ -11,6 +11,7 @@ const getCustomers = async (req, res) => {
 };
 
 
+
 // GET ONE
 const getCustomerById = async (req, res) => {
   try {
@@ -29,14 +30,11 @@ const getCustomerById = async (req, res) => {
 };
 
 
+
 // CREATE
 const createCustomer = async (req, res) => {
   try {
-    let {
-      customerName,
-      customerContactNumber,
-      customerEmail,
-    } = req.body;
+    let { customerName, customerContactNumber, customerEmail } = req.body;
     // Clean input
     customerName = customerName?.trim();
     customerEmail = customerEmail?.trim().toLowerCase();
@@ -49,8 +47,7 @@ const createCustomer = async (req, res) => {
     // Name validation
     if (!/^[A-Za-z\s]+$/.test(customerName)) {
       return res.status(400).json({
-        message:
-          "Customer name can contain only letters and spaces",
+        message: "Customer name can contain only letters and spaces",
       });
     }
     // Phone validation
@@ -98,27 +95,17 @@ const createCustomer = async (req, res) => {
 // UPDATE
 const updateCustomer = async (req, res) => {
   try {
-    let {
-      customerName,
-      customerContactNumber,
-      customerEmail,
-    } = req.body;
+    let { customerName, customerContactNumber, customerEmail } = req.body;
     if (customerName) customerName = customerName.trim();
-    if (customerEmail)
-      customerEmail = customerEmail.trim().toLowerCase();
+    if (customerEmail) customerEmail = customerEmail.trim().toLowerCase();
     // Duplicate check excluding current customer
     const existingCustomer = await Customer.findOne({
       _id: { $ne: req.params.id },
-      $or: [
-        { customerName },
-        { customerContactNumber },
-        { customerEmail },
-      ],
+      $or: [{ customerName }, { customerContactNumber }, { customerEmail }],
     });
     if (existingCustomer) {
       return res.status(400).json({
-        message:
-          "Another customer with same details already exists",
+        message: "Another customer with same details already exists",
       });
     }
     const updatedCustomer = await Customer.findByIdAndUpdate(
@@ -131,7 +118,7 @@ const updateCustomer = async (req, res) => {
       {
         new: true,
         runValidators: true,
-      }
+      },
     );
     if (!updatedCustomer) {
       return res.status(404).json({
@@ -147,11 +134,11 @@ const updateCustomer = async (req, res) => {
 };
 
 
+
 // DELETE
 const deleteCustomer = async (req, res) => {
   try {
-    const deletedCustomer =
-      await Customer.findByIdAndDelete(req.params.id);
+    const deletedCustomer = await Customer.findByIdAndDelete(req.params.id);
     if (!deletedCustomer) {
       return res.status(404).json({
         message: "Customer not found",
@@ -166,6 +153,7 @@ const deleteCustomer = async (req, res) => {
     });
   }
 };
+
 
 module.exports = {
   getCustomers,
