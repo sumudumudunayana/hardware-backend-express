@@ -130,6 +130,11 @@ const createSale = async (req, res) => {
   }
 };
 
+
+
+
+
+
 // GET ALL SALES  (for ManageSalesPage)
 const getAllSales = async (req, res) => {
   try {
@@ -152,6 +157,11 @@ const getAllSales = async (req, res) => {
   }
 };
 
+
+
+
+
+
 //GET SALE BY ID (Invoice Page)
 const getSaleById = async (req, res) => {
   try {
@@ -170,6 +180,11 @@ const getSaleById = async (req, res) => {
   }
 };
 
+
+
+
+
+
 //UPDATE SALE (Only totalAmount)
 const updateSale = async (req, res) => {
   try {
@@ -186,6 +201,10 @@ const updateSale = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+
+
+
 
 //DELETE SALE (Restore Stock)
 const deleteSale = async (req, res) => {
@@ -210,6 +229,9 @@ const deleteSale = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+
+
 
 module.exports = {
   createSale,
