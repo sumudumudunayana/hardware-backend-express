@@ -7,6 +7,8 @@ function generateInvoiceNumber() {
   return "INV-" + Date.now();
 }
 
+
+
 //CREATE SALE
 const createSale = async (req, res) => {
   try {
