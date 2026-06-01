@@ -11,7 +11,6 @@ const predictAI = async (req, res) => {
     const sales = await SaleItem.find()
       .populate("itemId")
       .sort({ createdAt: -1 });
-
     if (!sales || sales.length === 0) {
       return res.status(404).json({
         message: "No sales data found",
@@ -24,7 +23,6 @@ const predictAI = async (req, res) => {
     for (const sale of sales) {
       const item = sale.itemId;
       if (!item) continue;
-
       const productId = String(item._id);
 
       if (processedProducts.has(productId)) continue;
