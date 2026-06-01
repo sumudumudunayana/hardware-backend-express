@@ -24,7 +24,6 @@ const register = async (req, res) => {
       password: hashedPassword,
       role: role || "staff", // default role
     });
-
     res.status(201).json({
       message: "User registered successfully",
       user: {
